@@ -17,8 +17,8 @@ module.exports = {
     },
 
     create: function(req, res, next){
-        if(_.has(req, "body") && _.has(req.body, "address") && _.has(req.body, "type") && _.has(req.body, "ttl")){
-            persistence.create_record(req.params.record, _.pick(req.body, ["address", "type", "ttl"]), function(err){
+        if(_.has(req, "body") && _.has(req.body, "type")){
+            persistence.create_record(req.params.record, req.body, function(err){
                 if(err)
                     res.stash = err;
                 else
@@ -34,8 +34,8 @@ module.exports = {
     },
 
     update: function(req, res, next){
-        if(_.has(req, "body") && _.has(req.body, "address") && _.has(req.body, "type") && _.has(req.body, "ttl")){
-            persistence.update_record(req.params.record, _.pick(req.body, ["address", "type", "ttl"]), function(err){
+        if(_.has(req, "body") && _.has(req.body, "type")){
+            persistence.update_record(req.params.record, req.body, function(err){
                 if(err)
                     res.stash = err;
                 else
