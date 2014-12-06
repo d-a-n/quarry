@@ -7,27 +7,31 @@ module.exports = {
         var self = this;
         this.options = options;
 
-        fs.readFile(this.options["config-path"], function(err, contents){
-            try{
-                contents = JSON.parse(contents.toString());
-                if(!_.has(contents, "records"))
-                    contents.records = {};
-                if(!_.has(contents, "forwarders"))
-                    contents.forwarders = {};
-            }
-            catch(err){
-                contents = {
-                    records: {},
-                    forwarders: {}
+        fs.realpath(this.options["config-path"], function(err, path){
+            self.cache_path = path;
+
+            fs.readFile(self.options["config-path"], function(err, contents){
+                try{
+                    contents = JSON.parse(contents.toString());
+                    if(!_.has(contents, "records"))
+                        contents.records = {};
+                    if(!_.has(contents, "forwarders"))
+                        contents.forwarders = {};
                 }
-            }
-            fs.writeFile(self.options["config-path"], JSON.stringify(contents), fn);
+                catch(err){
+                    contents = {
+                        records: {},
+                        forwarders: {}
+                    }
+                }
+                fs.writeFile(self.options["config-path"], JSON.stringify(contents), fn);
+            });
         });
     },
 
     get_configuration: function(fn){
-        if(_.has(require.cache, this.options["config-path"]))
-            delete require.cache[this.options["config-path"]];
+        if(_.has(require.cache, this.cache_path))
+            delete require.cache[this.cache_path];
 
         var configuration = require(this.options["config-path"]);
         return fn(null, configuration);
