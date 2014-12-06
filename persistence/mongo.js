@@ -9,7 +9,7 @@ module.exports = {
         var self = this;
         this.options = options;
 
-        mongo.connect(["mongodb://", options["mongo-host"], ":", options["mongo-port"]].join(""), function(err, client){
+        mongo.connect(["mongodb://", options["mongo-host"], ":", options["mongo-port"], "/", options["mongo-database"]].join(""), function(err, client){
             self.client = client;
             return fn();
         });
