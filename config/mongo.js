@@ -9,6 +9,11 @@ module.exports = {
         help: "MongoDB port",
         metavar: "PORT",
         default: 27017
+    },
+
+    "mongo-database": {
+        help: "MongoDB database",
+        metavar: "DATABASE",
+        default: "quarry"
     }
 }
-
