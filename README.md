@@ -19,9 +19,11 @@ Run ```npm install -g quarry-dns``` to install Quarry, and put it in your PATH.
 ### Statsd Integration
 Setting ```--statsd-host``` will enable Quarry statsd integration. Ship metrics such as:
 * # errors
+* # forwarder timeouts
 * # records
 * # forwarders
 * Reconciliation duration
+* HTTP Response Codes
 
 ### Various Persistence Layers
 * Disk
