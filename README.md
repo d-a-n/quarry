@@ -12,7 +12,7 @@ A rock solid, dynamic DNS server with swappable backends. Start Quarry with one 
 ## Getting Started
 
 ### Installing
-Run ```npm install -g quarry-dns``` to install quarry-dns, and put it in your PATH.
+Run ```npm install -g quarry-dns``` to install Quarry, and put it in your PATH.
 
 ## Features
 
