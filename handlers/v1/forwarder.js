@@ -9,9 +9,8 @@ module.exports = {
 
     get: function(req, res, next){
         persistence.get_configuration(function(err, configuration){
-            var forwarders = _.indexBy(configuration.forwarders, "address");
-            if(_.has(forwarders, req.params.forwarder))
-                res.stash.body = forwarders[req.params.forwarder];
+            if(_.has(configuration.forwarders, req.params.forwarder))
+                res.stash.body = configuration.forwarders[req.params.forwarder];
 
             return next();
         });

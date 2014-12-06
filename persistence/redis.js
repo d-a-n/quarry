@@ -99,7 +99,7 @@ module.exports = {
                         return fn();
                 });
             }
-        })
+        });
     },
 
     create_forwarder: function(name, forwarder, fn){
@@ -121,7 +121,7 @@ module.exports = {
         });
     },
 
-    update_forwarder: function(name, record, fn){
+    update_forwarder: function(name, forwarder, fn){
         var self = this;
 
         this.client.hexists(["quarry", "forwarders"].join(":"), name, function(err, exists){
@@ -130,7 +130,7 @@ module.exports = {
             else if(exists == 0)
                 return fn({code: 404});
             else{
-                self.client.hset(["quarry", "forwarders"].join(":"), name, JSON.stringify(record), function(err){
+                self.client.hset(["quarry", "forwarders"].join(":"), name, JSON.stringify(forwarder), function(err){
                     if(err)
                         return fn({code: 400, body: err.message});
                     else

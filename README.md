@@ -29,6 +29,7 @@ Setting ```--statsd-host``` will enable Quarry statsd integration. Ship metrics 
 * Disk
 * Redis
 * MongoDB
+* S3
 
 ### RESTful API
 Manage records and forwarders through a simple API.
@@ -44,6 +45,9 @@ Manage records and forwarders through a simple API.
 
 ### MongoDB
 ```sudo quarry mongo --mongo-host ds028017.mongolab.com```
+
+### S3
+```sudo quarry s3 --access-key-id ACCESSKEYID --secret-access-key SECRETACCESSKEY --bucket quarry```
 
 ### RESTful API
 
