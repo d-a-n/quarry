@@ -1,6 +1,6 @@
 {
   "name": "quarry-dns",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A rock solid, dynamic DNS server with swappable backends and RESTful API",
   "main": "application.js",
   "scripts": {
