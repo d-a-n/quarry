@@ -22,16 +22,16 @@ Run ```npm install -g quarry-dns``` to install quarry-dns, and put it in your PA
 * MongoDB
 
 ## Usage & Examples
-```quarry-dns --help``` can be used for a comprehensive list of available commands and options. Below are some usage examples:
+```quarry-dns --help``` can be used for a comprehensive list of available commands and options. Quarry must be start as root, otherwise it cannot listen on a priviliged port. Below are some usage examples:
 
 ### Disk
-```quarry disk --config-path /path/to/quarry/config.json```
+```sudo quarry disk --config-path /path/to/quarry/config.json```
 
 ### Redis
-```quarry redis --redis-host quarry.abcdef.0001.use1.cache.amazonaws.com```
+```sudo quarry redis --redis-host quarry.abcdef.0001.use1.cache.amazonaws.com```
 
 ### MongoDB
-```quarry mongo --mongo-host ds028017.mongolab.com```
+```sudo quarry mongo --mongo-host ds028017.mongolab.com```
 
 ### RESTful API
 
