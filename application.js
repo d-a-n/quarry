@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var fs = require("fs");
 var _ = require("lodash");
 var dns = require("native-dns");
