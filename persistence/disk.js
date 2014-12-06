@@ -4,8 +4,25 @@ var _ = require("lodash");
 module.exports = {
 
     initialize: function(options, fn){
+        var self = this;
         this.options = options;
-        return fn();
+
+        fs.readFile(this.options["config-path"], function(err, contents){
+            try{
+                contents = JSON.parse(contents.toString());
+                if(!_.has(contents, "records"))
+                    contents.records = {};
+                if(!_.has(contents, "forwarders"))
+                    contents.forwarders = {};
+            }
+            catch(err){
+                contents = {
+                    records: {},
+                    forwarders: {}
+                }
+            }
+            fs.writeFile(self.options["config-path"], JSON.stringify(contents), fn);
+        });
     },
 
     get_configuration: function(fn){
