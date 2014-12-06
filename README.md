@@ -14,9 +14,16 @@ A rock solid, dynamic DNS server with swappable backends. Start Quarry with one 
 ### Installing
 Run ```npm install -g quarry-dns``` to install quarry-dns, and put it in your PATH.
 
-## Under the Hood
+## Features
 
-### Available Persistence Layers
+### Statsd Integration
+Setting ```--statsd-host``` will enable Quarry statsd integration. Ship metrics such as:
+* # errors
+* # records
+* # forwarders
+* Reconciliation duration
+
+### Various Persistence Layers
 * Disk
 * Redis
 * MongoDB
