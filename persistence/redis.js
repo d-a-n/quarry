@@ -5,9 +5,10 @@ var async = require("async");
 
 module.exports = {
 
-    initialize: function(options){
+    initialize: function(options, fn){
         this.options = options;
         this.client = redis.createClient(options["redis-port"], options["redis-host"]);
+        return fn();
     },
 
     get_configuration: function(fn){
@@ -39,8 +40,8 @@ module.exports = {
                     return cb();
                 });
             }
-        ], function(){
-            return fn(null, configuration);
+        ], function(err){
+            return fn(err, configuration);
         });
     },
 

@@ -16,6 +16,7 @@
     "quarry",
     "api",
     "redis",
+    "mongo",
     "disk"
   ],
   "author": "Norman Joyner <norman.joyner@gmail.com>",
@@ -29,6 +30,7 @@
     "body-parser": "^1.10.0",
     "express": "^4.10.4",
     "lodash": "^2.4.1",
+    "mongodb": "^1.4.23",
     "native-dns": "^0.7.0",
     "nomnom": "^1.8.1",
     "redis": "^0.12.1",

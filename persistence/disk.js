@@ -3,8 +3,9 @@ var _ = require("lodash");
 
 module.exports = {
 
-    initialize: function(options){
+    initialize: function(options, fn){
         this.options = options;
+        return fn();
     },
 
     get_configuration: function(fn){

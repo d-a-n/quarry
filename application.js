@@ -17,12 +17,14 @@ _.each(available_configs, function(config){
 });
 
 // set options
-var redis_options = _.defaults(_.clone(configuration.default), _.clone(configuration.redis));
 var disk_options = _.defaults(_.clone(configuration.default), _.clone(configuration.disk));
+var redis_options = _.defaults(_.clone(configuration.default), _.clone(configuration.redis));
+var mongo_options = _.defaults(_.clone(configuration.default), _.clone(configuration.mongo));
 
 // initialize commands
 nomnom.command("disk").options(disk_options);
 nomnom.command("redis").options(redis_options);
+nomnom.command("mongo").options(mongo_options);
 
 // set script name
 nomnom.script(pkg.name);
