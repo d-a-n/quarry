@@ -28,6 +28,9 @@ Setting ```--statsd-host``` will enable Quarry statsd integration. Ship metrics 
 * Redis
 * MongoDB
 
+### RESTful API
+Manage records and forwarders through a simple API.
+
 ## Usage & Examples
 ```quarry-dns --help``` can be used for a comprehensive list of available commands and options. Quarry must be start as root, otherwise it cannot listen on a priviliged port. Below are some usage examples:
 
