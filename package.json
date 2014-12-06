@@ -32,6 +32,7 @@
     "lodash": "^2.4.1",
     "mongodb": "^1.4.23",
     "native-dns": "^0.7.0",
+    "node-statsd": "^0.1.0",
     "nomnom": "^1.8.1",
     "redis": "^0.12.1",
     "winston": "^0.8.3"

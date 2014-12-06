@@ -5,6 +5,7 @@ var dns = require("native-dns");
 var nomnom = require("nomnom");
 var pkg = require([__dirname, "package"].join("/"));
 var logger = require([__dirname, "lib", "logger"].join("/"));
+var statsd = require([__dirname, "lib", "statsd"].join("/"));
 var Server = require([__dirname, "lib", "server"].join("/"));
 var API = require([__dirname, "lib", "api"].join("/"));
 
@@ -33,8 +34,11 @@ nomnom.script(pkg.name);
 var options = nomnom.parse();
 
 // init logger
-logger.init(options["log-level"]);
+logger.initialize(_.pick(options, "log-level"));
 logger.log("info", ["Starting Quarry version", pkg.version].join(" "));
+
+// init statsd
+statsd.initialize(_.pick(options, ["statsd-host", "statsd-port"]));
 
 // initialize and start server
 var server = new Server(options);

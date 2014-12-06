@@ -371,6 +371,11 @@
         }
       }
     },
+    "node-statsd": {
+      "version": "0.1.0",
+      "from": "node-statsd@",
+      "resolved": "https://registry.npmjs.org/node-statsd/-/node-statsd-0.1.0.tgz"
+    },
     "nomnom": {
       "version": "1.8.1",
       "from": "nomnom@",

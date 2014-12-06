@@ -40,6 +40,18 @@ module.exports = {
         default: 5353
     },
 
+    "statsd-host": {
+        help: "Address of statsd server",
+        metavar: "HOST",
+        required: false
+    },
+
+    "statsd-port": {
+        help: "Port statsd server listens on",
+        metavar: "PORT",
+        default: 8125
+    },
+
     "log-level": {
         abbr: "l",
         help: "Log level",
