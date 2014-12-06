@@ -1,0 +1,42 @@
+var fs = require("fs");
+var _ = require("lodash");
+var dns = require("native-dns");
+var nomnom = require("nomnom");
+var pkg = require([__dirname, "package"].join("/"));
+var logger = require([__dirname, "lib", "logger"].join("/"));
+var Server = require([__dirname, "lib", "server"].join("/"));
+var API = require([__dirname, "lib", "api"].join("/"));
+
+// get configuration options
+var configuration = {};
+var available_configs = fs.readdirSync([__dirname, "config"].join("/"));
+_.each(available_configs, function(config){
+    var config_name = config.split(".")[0];
+    configuration[config_name] = require([__dirname, "config", config].join("/"));
+});
+
+// set options
+var redis_options = _.defaults(_.clone(configuration.default), _.clone(configuration.redis));
+var disk_options = _.defaults(_.clone(configuration.default), _.clone(configuration.disk));
+
+// initialize commands
+nomnom.command("disk").options(disk_options);
+nomnom.command("redis").options(redis_options);
+
+// set script name
+nomnom.script(pkg.name);
+
+// parse options
+var options = nomnom.parse();
+
+// init logger
+logger.init(options["log-level"]);
+logger.log("info", ["Starting", pkg.name, "version", pkg.version].join(" "));
+
+// initialize and start server
+var server = new Server(options);
+server.listen();
+
+// initialize and start API
+var api = new API(options);
+api.listen();

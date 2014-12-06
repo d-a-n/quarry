@@ -1,0 +1,6 @@
+module.exports = {
+    "config-path": {
+        help: "Path to Quarry configuration file",
+        required: true
+    }
+}
