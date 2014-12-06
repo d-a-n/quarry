@@ -31,7 +31,7 @@ var options = nomnom.parse();
 
 // init logger
 logger.init(options["log-level"]);
-logger.log("info", ["Starting", pkg.name, "version", pkg.version].join(" "));
+logger.log("info", ["Starting Quarry version", pkg.version].join(" "));
 
 // initialize and start server
 var server = new Server(options);
