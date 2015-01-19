@@ -58,5 +58,25 @@ module.exports = {
         metavar: "LEVEL",
         choices: ["silly", "debug", "verbose", "info", "warn", "error"],
         default: "info"
+    },
+
+    "blacklist": {
+        abbr: "b",
+        help: "Comma seperated list of TLDs/hostnames you don't want clients to set. e.g. --blacklist=.com,.example.org",
+        metavar: "BLACKLIST",
+        transform: function(blacklist) {
+            return blacklist.trim().split(",");
+        },
+        default: []       
+    },
+
+    "whitelist": {
+        abbr: "w",
+        help: "Comma seperated list of TLDs/hostnames you want your service be limited to e.g. --whitelist=.dev,.development.corp",
+        metavar: "WHITELIST",
+        transform: function(whitelist) {
+            return whitelist.trim().split(",");
+        },
+        default: []       
     }
 }

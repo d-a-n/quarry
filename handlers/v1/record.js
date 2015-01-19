@@ -1,9 +1,11 @@
-var _ = require("lodash");
-var persistence;
+var _ = require("lodash"),
+    auth = require([__dirname, "..", "..", "lib", "auth"].join("/")),
+    persistence;
 
 module.exports = {
 
     initialize: function(options){
+        auth.initialize(options);
         persistence = require([__dirname, "..", "..", "persistence", _.first(options._)].join("/"));
     },
 
@@ -18,7 +20,14 @@ module.exports = {
 
     create: function(req, res, next){
         if(_.has(req, "body") && _.has(req.body, "type")){
-            persistence.create_record(req.params.record, req.body, function(err){
+
+            var record = req.params.record;
+            if (!auth.allowed(record)) {
+                res.stash.code = 403;
+                return next();
+            }
+
+            persistence.create_record(record, req.body, function(err){
                 if(err)
                     res.stash = err;
                 else

@@ -37,6 +37,20 @@ Manage records and forwarders through a simple API.
 ## Usage & Examples
 ```quarry --help``` can be used for a comprehensive list of available commands and options. Quarry must be start as root, otherwise it cannot listen on a priviliged port. Below are some usage examples:
 
+## Options
+    -v, --version                         Print version and exit
+    --reconciliation-interval INTERVAL    Interval on which to update DNS records  [60000]
+    -i INTERFACE, --interface INTERFACE   Interface to listen on for DNS queries  [0.0.0.0]
+    -p PORT, --port PORT                  Port to listen on for DNS queries  [53]
+    --api-interface INTERFACE             Interface to listen on for API requests  [0.0.0.0]
+    --api-port PORT                       Port to listen on for API requests  [5353]
+    --statsd-host HOST                    Address of statsd server
+    --statsd-port PORT                    Port statsd server listens on  [8125]
+    -l LEVEL, --log-level LEVEL           Log level  [info]
+    -b BLACKLIST, --blacklist BLACKLIST   Comma seperated list of TLDs/hostnames you don't want clients to set. e.g. --blacklist=.com,.example.org  []
+    -w WHITELIST, --whitelist WHITELIST   Comma seperated list of TLDs/hostnames you want your service be limited to e.g. --whitelist=.dev,.development.corp  []
+    --config-path PATH                    Path to Quarry configuration file
+
 ### Disk
 ```sudo quarry disk --config-path /path/to/quarry/config.json```
 
