@@ -37,7 +37,7 @@ Manage records and forwarders through a simple API.
 ## Usage & Examples
 ```quarry --help``` can be used for a comprehensive list of available commands and options. Quarry must be start as root, otherwise it cannot listen on a priviliged port. Below are some usage examples:
 
-## Options
+### Options
     -v, --version                         Print version and exit
     --reconciliation-interval INTERVAL    Interval on which to update DNS records  [60000]
     -i INTERFACE, --interface INTERFACE   Interface to listen on for DNS queries  [0.0.0.0]
