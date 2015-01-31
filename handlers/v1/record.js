@@ -2,7 +2,7 @@ var _ = require("lodash"),
     auth = require([__dirname, "..", "..", "lib", "auth"].join("/")),
     persistence;
 
-module.exports = {
+var record = {
 
     initialize: function(options){
         auth.initialize(options);
@@ -45,11 +45,14 @@ module.exports = {
     update: function(req, res, next){
         if(_.has(req, "body") && _.has(req.body, "type")){
             persistence.update_record(req.params.record, req.body, function(err){
-                if(err)
+                if(err) {
+                    if(err.code == 404) {
+                        return record.create(req, res, next);
+                    }
                     res.stash = err;
-                else
+                } else {
                     res.stash.code = 200;
-
+                }
                 return next();
             });
         }
